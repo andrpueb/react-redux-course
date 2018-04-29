@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>node.js - The Net Ninja</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+
+
+	<!-- src/index.html -->
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="styles/styles.css">
+    <!-- endinject -->
+
+
+</head>
+<body class="jumbotron container">
+	<!-- inject:js -->
+    <script src="app.js"></script>
+    <script src="moduleTest.js"></script>
+    <!-- endinject -->
+<h1>node.js</h1>
+<section class="nodejs">
+	<h2>Modules</h2>
+		<p>Los módulos son piezas funcionales que podemos usar en donde las necesitemos y podemos crearlos o usar los que ya están en Node, esa es la naturaleza de Node, tener modulos que puedan ser utilizados por quien lo necesite. Para usar estos módulos debemos usar <code>require</code> para usar los módulos en donde lo necesitemos.</p>
+			<h3>Core Modules</h3>
+				<p>Son modulos que vienen incluidos dentro de la instalació de node.js y se pueden usar de inmediato mediante el uso de <code>require</code>. e.g. <code> const fs = require('fs');</code></p>
+			<h3>Local Modules</h3>
+				<p>Son módulos escritos por nosotros y que son usados de forma local, primero los debemos exportar e.g.<code>module.exports = log</code> y después los usamos en donde queremos usando <code>const myModule = require('./mymodule')</code> e.g</p>
+				<script src="https://gist.github.com/andrpueb/e1cb22f3f286ac675bd2a02d1ed80abf.js"></script>
+				<script src="https://gist.github.com/andrpueb/5ca5cc3571d632bcd6c1345ccdbdb008.js"></script>
+			<h3>Third Party Modules</h3>
+				<p>Son módulos escritos por terceras personas y que podemos instalar y usar cuando queramos. Los usamos de la misma forma que lo hacemos con los módulos CORE, la única diferencia es que los debemos instalar antes. Los modulos CORE vienen dentro de Node.js y cuando instalamos Node también instalamos NPM. Antes de instalar cualquier paquete primero debemos inicializar NPM a través de <code>npm init</code>, se nos van a hacer algunas preguntas relacionadas con la aplicación en la que estemos trabajando, este proceso lo que va hacer es crear al final un archivo llamado <code>package.json</code> en este archivo quederán gurdados los datos del proyecto y ademáas se iran guardando las lista de los módulos o dependencias que vayamos descargando, de esta forma si compartimos el proyecto en una plataforma como GIT no será necesario subir toda la carpeta node_modules sino que solo teniendo este archivo y mediante el comando <code>npm install</code>se descargarán e instalarán todas las dependencias que ahí se encuentren.
+				</p>
+</section>
+<hr>
+<section>
+	<h2>Restarting APP with Nodemon</h2>
+	<p>Nodemon es una aplicación que monitorea los cambios que hacemos en nuestra aplicacion y la vuelve a ejecutar de inmediato así que tenemos que hacerlo nosotros cada vez.</p>
+	<code> npm install nodemon -g</code><p>La instalamos con la flag <code>-g</code> porque de esta manera queda instalada de forma global en nuestra máquina y por lo tanto accesible en nuestra linea de comando para cualquier proyecto en que la queramos usar.</p>
+	<p>Si por ejemplo queremos mantener nuestra aplicació bajo el ojo de nodemon lo que hacemos es lo siguiente: <code>nodemon app.js</code> y listo, cada vez que hagamos un cambio, nuestra aplicacion se volvera a ejecutar.</p>
+</section>
+<section>
+	<h2>Getting input from user</h2>
+	<p>El objeto <code>process</code> es un objeto global y por lo tanto está siempre disponible y puede ser llamado desde cualquier parte sin la necesidad de usar <code>require</code>.</p>
+	<p>Cuando ejecutamos una aplicacion e.g. <code>node app.js</code> también podemos pasar los argumentos que queramos y utilizarlos cuando queramos. Estos argumntos se añaden de la siguiente forma: <code>node app.js list</code>. Aquí añadimos el argumento <strong>list</strong> y para leerlos podemos mostrar mostrar en la consola a través de <code>console.log</code>, Dentro de app.js agregamos <code>console.log(process.argv)</code> y cuando corremos <cmdcode>node app.js list</cmdcode> se nos mostrará el contenido del array.
+	<script src="https://gist.github.com/andrpueb/bfdd573bad72115788ed8f1cecd52c4a.js"></script>
+	<p>Con el ejemplo anterior podemos obtener diferentes resultados que van a depender del valor que introduzcamos como argumento, si por ejemplo corremos <cmdcode>node app.js read</cmdcode> veremos en la consola <cmdcode>Fetching note</cmdcode>.</p>
+</section>
+
+<section>
+	<h2>Simplified input with Yargs</h2>
+
+</section>
+
+
+
+
+</body>
+</html>
